@@ -30,10 +30,9 @@ class Solution {
             return; 
         }
          lr.add(root.val);
-       List<Node> l = root.children;
        
-      for(int i = 0; i<l.size(); i++){
-          p(lr, l.get(i)); 
+      for(Node nn : root.children){
+          p(lr, nn); 
       }
    }
 }
