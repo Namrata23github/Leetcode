@@ -20,10 +20,7 @@ class Node {
 class Solution {
     public List<Integer> preorder(Node root) {
         List<Integer> lr = new ArrayList();
-        if(root== null) {
-            return lr; 
-        }
-        lr.add(root.val);
+       
         p(lr, root);
         return lr;
     }
@@ -32,16 +29,11 @@ class Solution {
         if(root== null) {
             return; 
         }
-        
+         lr.add(root.val);
        List<Node> l = root.children;
        
       for(int i = 0; i<l.size(); i++){
-          Node n = l.get(i);
-          if(n==null) {
-              continue; 
-          }
-          lr.add(n.val);
-          p(lr, n); 
+          p(lr, l.get(i)); 
       }
    }
 }
