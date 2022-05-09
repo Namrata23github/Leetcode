@@ -18,7 +18,7 @@ class Solution {
           // System.out.println(Arrays.toString(paa));
                    
 
-          if(Arrays.toString(paa).equals( Arrays.toString(pa))) {
+          if(Arrays.equals(paa, pa)) {
               list.add(i);
           }
        }
