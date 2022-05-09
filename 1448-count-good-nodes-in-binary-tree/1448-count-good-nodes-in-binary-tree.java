@@ -20,8 +20,6 @@ class Solution {
             return 0;
         }
          int max = root.val;
-       
-        
         goodNodes(root, root.val);
         return count;
         
