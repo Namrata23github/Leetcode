@@ -22,9 +22,7 @@ class Solution {
                 Character t = Character.valueOf(two.charAt(j));
                 if(o!=t ){
                             if(  ordermap.get(o) > ordermap.get(t) ) {
-                    
-                    System.out.println(o + " " + ordermap.get(o) + " " + t + " " + ordermap.get(t));
-                     System.out.println(o!=t);
+                
                     return false;
                 } else {
                              break;   
