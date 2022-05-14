@@ -12,10 +12,7 @@ class Solution {
             match.add(strs[i]);
             map.put(Arrays.toString(a),match );
         }
-        List<List<String>> ans = new ArrayList();
-        for(List<String> l : map.values()) {
-            ans.add(l);
-        }
-        return ans;
+       
+        return new ArrayList(map.values());
     }
 }
