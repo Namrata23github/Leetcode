@@ -3,9 +3,8 @@ class Solution {
         HashMap<String, List<String>> map = new HashMap();
         for(int i=0; i < strs.length; i++) {
             int a[] = new int[26];
-            for(int j=0; j < strs[i].length(); j++) {
-                char ch = strs[i].charAt(j);
-                a[ch-'a']++;
+          for (char c : strs[i].toCharArray()) {
+                a[c-'a']++;
             }
             
             List<String> match = map.getOrDefault(Arrays.toString(a), new ArrayList());
