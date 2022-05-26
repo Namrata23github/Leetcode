@@ -17,17 +17,17 @@ class Solution {
     public Node copyRandomList(Node head) {
        
        Map<Node, Node> map = new HashMap();
-        Node p2 = head;
-        while(p2!= null && p2.next!= null) {
-            map.put(p2, new Node(p2.val));
-             map.put(p2.next, new Node(p2.next.val));
-            p2 = p2.next.next;
+        Node p1 = head;
+        while(p1!= null && p1.next!= null) {
+            map.put(p1, new Node(p1.val));
+             map.put(p1.next, new Node(p1.next.val));
+            p1 = p1.next.next;
         }
         
-        if(p2!=null) {
-             map.put(p2, new Node(p2.val));
+        if(p1!=null) {
+             map.put(p1, new Node(p1.val));
         }
-        Node p1 = head;
+         p1 = head;
         
          while (p1!= null) {
              Node n11 = map.get(p1);
