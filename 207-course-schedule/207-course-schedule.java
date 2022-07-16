@@ -1,50 +1,41 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        if(numCourses > 0 && prerequisites.length == 0) {
-            return true;
-        }
+        HashMap<Integer, List<Integer>>  map = new HashMap();
+        int visited[] = new int[numCourses];
         
-    
-        Map<Integer,List<Integer>> graph = new HashMap();
-              for(int i=0; i<numCourses; i++) {
-        graph.put(i,new ArrayList<Integer>());
+                 for(int i=0; i<numCourses; i++) {
+        map.put(i,new ArrayList<Integer>());
     }
         
-        for(int i=0; i<prerequisites.length; i++) {
-           List<Integer> c = graph.get(prerequisites[i][0]);
-            c.add(prerequisites[i][1]);   
-            graph.put(prerequisites[i][0], c);
+        for(int i = 0; i < prerequisites.length; i++ ) {
+           List<Integer> arr = map.get(prerequisites[i][0]);
+            arr.add(prerequisites[i][1]);
+            
+            map.put(prerequisites[i][0], arr);
         }
         
-  
-        int[] visited = new int[numCourses];
-        
-        for(int i=0; i < numCourses; i++) {
-            if(!dfs(i, graph, visited)) {
+        for(int i = 0; i < numCourses ; i++) {
+            if(!dfs(map,  visited,  i)) {
                 return false;
-            };
+            }
         }
-        
         return true;
-        
     }
     
-    public boolean dfs(int course, Map<Integer,List<Integer>> graph, int[] visited) {
-        visited[course] = 1;
+    boolean dfs(HashMap<Integer, List<Integer>>  map, int[] visited, int node) {
         
-        List<Integer> c = graph.get(course);
+        visited[node] = 1;
         
-        for(Integer n: c) {
+        for (int n: map.get(node)) {
             if(visited[n] == 1) return false;
             if(visited[n] == 0) {
-                if(!dfs(n, graph, visited)) {
+                if(!dfs(  map,  visited,  n)) {
                     return false;
                 }
             }
-                
         }
-    visited[course] = 2;
-        return true;
         
+        visited[node] =2;
+        return true;
     }
 }
