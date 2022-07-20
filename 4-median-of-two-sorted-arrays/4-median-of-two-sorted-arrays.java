@@ -1,77 +1,49 @@
+
+
+
+
 class Solution {
-    public double findMedianSortedArrays(int[] num1, int[] num2) {
-     
-        int sum = num1.length + num2.length;
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if(nums1.length + nums2.length == 1) {
+            return nums1.length == 1 ?  nums1[0]  : nums2[0] ;
+        }
         
-        int medium = ((sum + 1)/2 );
-              
-        int i = 0;
-        int count = 0;
+        int mid = (nums1.length + nums2.length) / 2;
+ System.out.println(mid);
+
         int j = 0;
+        int k = 0;
         
- int median1 = 0;
-         int median2;
-        if(num1.length == 0) {
-            
-                median2 = num2[medium - 1];
-            
-            if(sum%2 == 0)  {
-                median1 = num2[medium];
-            }
-            
-        } else if(num2.length == 0) {
-            median2 = num1[medium - 1];
-            
-             if(sum%2 == 0)  {
-                median1 = num1[medium];
-             }
-            
-        } else {
         
-         median1 = num1[0];
-       median2 = num1[0];
-        while ( i < num1.length && j < num2.length) {
-            if(num1[i] < num2[j]) {
-                 median2 = median1;
-                 median1 = num1[i];
-                i++;
-               
+        int a = 0; 
+        int b  = 0;
+        
+        
+        while( j < nums1.length && k < nums2.length && j + k <= mid) {
+              a = b;
+            if(nums1[j] < nums2[k]) {
+                b = nums1[j++];
             } else {
-                median2 = median1;
-                median1 = num2[j];
-                j++;
-                
+                b = nums2[k++];
             }
-            if(++count == medium + 1) {
-                break;
-            }
-            
         }
         
+        while(j < nums1.length && j + k <= mid) {
+            a = b;
+             b = nums1[j++];
+        }
         
+          while(k < nums2.length && j + k <= mid) {
+            a = b;
+             b = nums2[k++];
+        }
         
-        while(count < medium + 1) {
-            if(i < num1.length) {
-                median2 = median1;
-                median1 = num1[i];
-                i++;
-                count++;
-            } else {
-                median2 = median1;
-                median1 = num2[j]; 
-                j++;
-                  count++;
-            }
+
+        if((nums1.length + nums2.length) % 2 == 0) {
+            
+            return (double)(a+b)/2;
         } 
-        }
-        
-            
-            if(sum % 2 == 0) {
-                //System.out.println(median1 +  " " + median2);
-                return (double) (median1 + median2)/2;
-            }
-                return median2; 
-            
+           return b;
         
     }
 }
