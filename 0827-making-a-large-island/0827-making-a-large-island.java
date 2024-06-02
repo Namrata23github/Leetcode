@@ -23,7 +23,7 @@ class Solution {
              for ( int j = 0 ; j < grid[i].length; j++) {
                  
                  if ( grid[i][j] == 0) {
-                     //System.out.println("++++");
+                     
                      HashSet<Character> covered = new HashSet<>();
                      
                      
@@ -50,7 +50,6 @@ class Solution {
         }
         
         
-        // System.out.println("++++"+ grid[i][j]);
         
          covered.add((char) grid[i][j]);
         return map.get((char)grid[i][j]);
